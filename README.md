@@ -1,19 +1,19 @@
-## Quick Math
+# Quick Math
 
-# Description
+## Description
 This project is my final capstone project to receive my Associate's Degree. I wanted to do a project in which I would be interested. 
 After asking everyone I knew for ideas, I decided to make a game to help my mom's elementary school students learn math.
 The premise of the game is that the students can log into the game and try to solve as many math problems as possible. 
 The main thing I want to accomplish with this project is to learn how to make a full-stack project with a JavaScript front end,
 Java backend, and a database attached
 
-# Technologies Used in this project:
+## Technologies Used in this project:
     Spring (for connecting the JavaScript files to the backend Java)
     MySql Server (for storing account information)
 
 
 
-# Features:
+## Features:
     Users will be able to make their own accounts and those accounts will store their top 3 scores.
     Users will be able to log in and out of their accounts
     Users will also be able to send friend requests to any of their friends who have an account, which will allow them to see the top 3 times of each of their friends.
