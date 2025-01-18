@@ -1,4 +1,4 @@
-#Quick Math
+## Quick Math
 
 This project is my final capstone project to receive my Associate's Degree. I wanted to do a project in which I would be interested. 
 After asking everyone I knew for ideas, I decided to make a game to help my mom's elementary school students learn math.
