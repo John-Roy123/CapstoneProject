@@ -9,8 +9,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class GameController {
 
+
+        @RequestMapping("/")
+        public String landing(){
+            return "landing";
+        }
+
+
     @RequestMapping("/game")
     public String index(){
-        return "index";
+        return "game";
 }
 }

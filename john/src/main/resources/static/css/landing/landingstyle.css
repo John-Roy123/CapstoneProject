@@ -1,0 +1,104 @@
+@font-face {
+    font-family: Neueu Machina Regular;
+    src: url(NeueMachina-Regular.otf);
+}
+@font-face {
+    font-family: Neueu Machina Ultrabold;
+    src: url(NeueMachina-Ultrabold.otf);
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition: all 1s;
+}
+
+.column-left{
+    font-family: 'Neueu Machina Ultrabold';
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    color: white;
+    padding: 10rem;
+    
+    
+}
+
+.column-left h1{
+    margin-bottom: .5rem;
+    font-size: 5rem;
+    transition: all 0.5s;
+    opacity: .1.2s;
+}
+
+.column-left p{
+    margin-left: 25px;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    transition: ease-in .9s;
+    opacity: 1.2s;
+}
+
+button{
+    font-family: 'Neueu Machina Regular';
+    font-size: 2rem;
+    border-color: rgba(185,0,181,1);
+    color: pink;
+    background: black;
+    cursor: pointer;
+}
+
+button:hover{
+    font-size: 2.3rem;
+    border-color: rgba(185,0,181,1);
+    color: rgb(247, 143, 160);
+}
+
+
+
+.button-container{
+    margin: auto;
+    place-items: center;
+    display: grid;
+    width: 40%;
+    grid-auto-flow: column;
+    column-gap: 35%;
+}
+
+.githubdiv{
+    margin: 50px;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+
+}
+
+.github-logo{ 
+    margin-right: 6px; 
+    z-index: 10;
+    width: 25px;
+    height: 25px;
+}
+
+.github{
+    font-size: 1rem;
+    border: none;
+    color: pink;
+    background: none;
+    cursor: pointer;
+}
+.github:hover{
+    font-size: 1.2rem;
+    color: rgb(247, 107, 130);
+}
+
+body{
+    height: 100%;
+    background: rgb(0,0,1);
+    background: linear-gradient(155deg, rgba(0,0,1,1) 0%, rgba(0,0,0,1) 60%, rgba(185,0,181,1) 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
