@@ -1,0 +1,90 @@
+@font-face {
+    font-family: Neueu Machina Regular;
+    src: url(NeueMachina-Regular.otf);
+}
+@font-face {
+    font-family: Neueu Machina Ultrabold;
+    src: url(NeueMachina-Ultrabold.otf);
+}
+*{
+    box-sizing: border-box;
+    transition: all 1s;
+    font-family: 'Neueu Machina Regular';
+}
+
+.logincontainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    padding: 5px;
+}
+
+.login-header{
+    font-size: 3.5rem;
+    font-family: 'Neueu Machina Ultrabold';
+    color: white;
+}
+
+
+label{
+    position: relative;
+    font-size: 14px;
+    padding-top: 20px;
+    margin-bottom: 5px;
+}
+
+
+label .placeholder{
+    position: absolute;
+    left: 12px;
+    top: calc(50% + 10px);
+    transform: translateY(-50%);
+    color: #aaa;
+    transition:
+        top 0.3s ease,
+        font-size 0.3s ease,
+        color 0.3s ease,
+}
+
+label input{
+    border: none;
+    appearance: none;
+    -ms-appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background: #f2f2f2;
+    padding: 12px;
+    border-radius: 3px;
+    width: 250px;
+    outline: none;
+}
+
+label input:valid + .placeholder,
+label input:focus + .placeholder{
+    top: 10px;
+    font-size: 10px;
+    color: #222;
+}
+
+
+button{
+    font-family: 'Neueu Machina Regular';
+    border-color: rgba(185,0,181,1);
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+    background: none;
+    cursor: pointer;
+}
+
+body{
+    height: 100%;
+    background-image: linear-gradient(130deg, rgb(28, 97, 189) 0%, rgb(115, 68, 175) 60%, rgb(245, 43, 235) 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.hidden{
+    display: none;
+}

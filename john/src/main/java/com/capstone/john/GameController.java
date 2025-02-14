@@ -2,9 +2,7 @@ package com.capstone.john;
 
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class GameController {
@@ -14,6 +12,14 @@ public class GameController {
         public String landing(){
             return "landing";
         }
+
+        @RequestMapping("/login")
+        public String login(){
+            return "login";
+        }
+
+        @RequestMapping("/leaderboard")
+        public String leaderboard(){return "leaderboard";}
 
 
     @RequestMapping("/game")

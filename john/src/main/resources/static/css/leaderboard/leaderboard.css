@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+body {
+    font-weight: 400;
+    height: 100vh;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(90deg, black, blue);
+}
+
+main {
+    transition: ease-in 1s;
+    position: relative;
+    width: 120rem;
+    height: 70rem;
+    background-color: rgb(0, 0, 0);
+    backdrop-filter: blur(200px);
+    filter: blur();
+    box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    padding: 1rem; 
+}
+
+.title{
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    font-size: 8rem;
+    color: white;
+    font-weight: bold;
+}
+
+.button-container{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-right: 13rem;
+}
+
+button{
+    font-family: 'Neueu Machina Regular';
+    font-size: 2rem;
+    border-color: rgba(185,0,181,1);
+    color: rgb(248, 212, 218);
+    background: none;
+    cursor: pointer;
+    transition: all .5s;
+}
+
+button:hover{
+    font-size: 2.3rem;
+    border-color: rgba(185,0,181,1);
+    color: rgb(247, 143, 160);
+}
+
+.leaderboard-score {
+    color: white;
+
+    font-size: 18px;
+    display: flex;
+
+    align-items: center; 
+    width: 100%; 
+    padding: 1rem;
+    border-bottom: 1px solid white; 
+
+    flex-grow:1;
+}
+
+.leaderboard-score:last-child {
+    border-bottom: none; 
+}

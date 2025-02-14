@@ -5,10 +5,10 @@ const github = document.querySelector('.github')
 
 
 signin.addEventListener('click', ()=>{
-    window.location.href = "http://127.0.0.1:5500/signin"
+    window.location.href = "localhost:8080/login"
 })
 leaderboard.addEventListener('click', ()=>{
-    window.location.href = "http://127.0.0.1:5500/leaderboard"
+    window.location.href = "localhost:8080/leaderboard"
 })
 github.addEventListener('click', () =>{
     window.open("https://github.com/John-Roy123", "_blank")
