@@ -22,8 +22,8 @@ public class GameController {
         public String leaderboard(){return "leaderboard";}
 
 
-    @RequestMapping("/game")
-    public String index(){
+        @RequestMapping("/game")
+        public String index(){
         return "game";
 }
 }
