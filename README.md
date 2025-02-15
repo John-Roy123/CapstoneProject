@@ -8,13 +8,13 @@ The main thing I want to accomplish with this project is to learn how to make a 
 Java backend, and a database attached
 
 ## Technologies Used in this project:
-    Spring (for connecting the JavaScript files to the backend Java)
+    Spring boot (backend)
     MySql Server (for storing account information)
 
 
 
 ## Features:
-    Users will be able to make their own accounts and those accounts will store their top 3 scores.
+    Users will be able to make their own accounts and those accounts will store their top score.
     Users will be able to log in and out of their accounts
-    Users will also be able to send friend requests to any of their friends who have an account, which will allow them to see the top 3 times of each of their friends.
-    Users will be able to access a leaderboard of the top 20 fastest playtimes in the system.
+    Users will also be able to send friend requests to any of their friends who have an account, which will allow them to see the top score for each of their friends.
+    Users will be able to access a leaderboard of the top 10 fastest playtimes in the system.
