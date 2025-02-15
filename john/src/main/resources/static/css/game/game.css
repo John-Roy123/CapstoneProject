@@ -24,8 +24,8 @@ body {
 /* LAYOUT */
 main {
     position: relative;
-    width: 100rem;
-    height: 60rem;
+    width: 70rem;
+    height: 70rem;
     background-color: rgba(255, 255, 255, 0.35);
     backdrop-filter: blur(200px);
     filter: blur();
@@ -37,7 +37,7 @@ main {
 
 .player {
     flex: 50%;
-    padding: 9rem;
+    padding: 12rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -81,7 +81,7 @@ main {
     opacity: 0.8;
     border-radius: 9px;
     color: #fff;
-    width: 65%;
+    width: 50%;
     padding: 2rem;
     text-align: center;
     transition: all 0.75s;
@@ -98,13 +98,13 @@ main {
     font-size: 3rem;
     position: absolute;
     transform: translateX(-50%);
-    top: 25rem;
+    top: 30rem;
     left: 50%;
     padding: 2rem;
     background-color: #62b1f1;
     color: #fff;
     border-radius: 9px;
-    width: 17%;
+    width: 30%;
     text-align: center;
     transition: all .5s;
 }
@@ -112,7 +112,7 @@ main {
     font-size: 3rem;
     position: absolute;
     transform: translateX(-50%);
-    top: 1rem;
+    top: 2rem;
     left: 50%;
     padding: 2rem;
     background-color: #62b1f1;

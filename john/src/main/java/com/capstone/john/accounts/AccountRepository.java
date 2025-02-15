@@ -1,4 +1,4 @@
-package com.capstone.john;
+package com.capstone.john.accounts;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

@@ -1,4 +1,4 @@
-package com.capstone.john;
+package com.capstone.john.accounts;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

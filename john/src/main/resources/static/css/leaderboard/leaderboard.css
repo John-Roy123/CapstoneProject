@@ -1,7 +1,17 @@
+@font-face {
+    font-family: Neueu Machina Regular;
+    src: url(NeueMachina-Regular.otf);
+}
+@font-face {
+    font-family: Neueu Machina Ultrabold;
+    src: url(NeueMachina-Ultrabold.otf);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: inherit;
+    font-family: 'Neueu Machina Ultrabold', serif;
 }
 
 html {
@@ -37,6 +47,7 @@ main {
 }
 
 .title{
+    font-family: 'Neueu Machina Ultrabold';
     position: absolute;
     left: 0;
     top: 50%;
@@ -70,6 +81,7 @@ button:hover{
 }
 
 .leaderboard-score {
+    font-family: 'Neueu Machina Regular';
     color: white;
 
     font-size: 18px;

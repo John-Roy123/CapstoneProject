@@ -11,5 +11,5 @@ for(let i = 1; i <= 10; i++){
 }
 
 button.addEventListener('click', ()=>{
-    window.location.href = "localhost:8080/game"
+    window.location.href = "http://localhost:8080/game"
 })
