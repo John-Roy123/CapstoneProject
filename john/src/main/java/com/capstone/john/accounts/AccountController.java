@@ -1,6 +1,7 @@
 package com.capstone.john.accounts;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,7 +12,7 @@ public class AccountController {
     @Autowired
     private AccountRepository accountRepository;
 
-    @PostMapping("/users")
+    @PostMapping("/newAccount")
     public Accounts createAccount(@RequestBody Accounts account) {
         return accountRepository.save(account);
     }
@@ -19,6 +20,21 @@ public class AccountController {
     @GetMapping("/users")
     public List<Accounts> getAllAccounts(){
         return accountRepository.findAll();
+    }
+
+    @GetMapping("/users/{username}")
+    public Accounts getAccount(@PathVariable String username) {
+        return accountRepository.findByUsername(username);
+    }
+    @GetMapping("/users/{username}/password")
+    public String getAccountPassword(@PathVariable String username) {
+        System.out.println(accountRepository.findByUsername(username).getPassword());
+        return accountRepository.findByUsername(username).getPassword();
+    }
+    @GetMapping("/users/{username}/exists")
+    public ResponseEntity<Boolean> existsAccount(@PathVariable String username) {
+        boolean toReturn = accountRepository.findByUsername(username) != null;
+        return ResponseEntity.ok(toReturn);
     }
 
     @GetMapping("/topScore/{username}")

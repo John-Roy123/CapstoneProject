@@ -38,6 +38,7 @@ function gameOver(){
     timerLabel.classList.add('hidden');
     newGame.classList.remove('hidden');
     newGame.addEventListener('click', setGame);
+
 }
 
 //checks if input is correct
