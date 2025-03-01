@@ -7,7 +7,7 @@ import java.util.List;
 
 @Repository
 public interface GameResultRepository extends CrudRepository<game_result, Long> {
-    public game_result findByGameId(long gameId);
-    public List<game_result> getAllGames(String gameName);
-    public void deleteGamesByUser(String userName);
+    game_result findGameById(Long id);
+    List<game_result> findGameByAccountUsername(String username);
+    public void deleteAllByAccountUsername(String userName);
 }

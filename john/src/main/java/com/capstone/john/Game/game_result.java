@@ -1,6 +1,8 @@
 package com.capstone.john.Game;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 import java.sql.Date;
@@ -8,21 +10,26 @@ import java.sql.Date;
 @Entity
 public class game_result {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String accountUsername;
-    //private Leaderboard leaderboard;
-    private Date date;
+    private Date gameDate;
     private int score;
 
-    public game_result() {}
-    public game_result(String accountUsername, Date date, int score) {
+    public game_result() {
+
+    }
+
+    
+    public game_result(String accountUsername, Date gameDate, int score) {
         this.accountUsername = accountUsername;
-        this.date = date;
+        this.gameDate = gameDate;
         this.score = score;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+
+    public void setgameDate(Date gameDate) {
+        this.gameDate = gameDate;
     }
     public void setScore(int score) {
         this.score = score;
@@ -34,8 +41,8 @@ public class game_result {
     public String getAccountUsername() {
         return accountUsername;
     }
-    public Date getDate() {
-        return date;
+    public Date getgameDate() {
+        return gameDate;
     }
     public int getScore() {
         return score;

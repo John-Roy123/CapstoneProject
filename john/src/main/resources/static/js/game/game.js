@@ -38,7 +38,7 @@ function gameOver(){
     timerLabel.classList.add('hidden');
     newGame.classList.remove('hidden');
     newGame.addEventListener('click', setGame);
-
+    submitScore()
 }
 
 //checks if input is correct
@@ -75,6 +75,25 @@ function setGame(){
     p2ScoreLabel.textContent = 0;
     document.getElementById('name--0').textContent = "Player 1";
     document.getElementById('name--1').textContent = "Player 2";
+}
+
+async function submitScore(){
+    try{
+        let date = new Date()
+        await fetch('http://localhost:8080/postGame',{
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                username: username,
+                score: p1Score,
+                date: date.getDate()
+            })
+        })
+    }catch(error){
+        ("Error submitting score: " + error)
+    }
 }
 
 setGame();

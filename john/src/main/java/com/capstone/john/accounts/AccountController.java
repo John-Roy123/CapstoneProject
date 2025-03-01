@@ -28,7 +28,6 @@ public class AccountController {
     }
     @GetMapping("/users/{username}/password")
     public String getAccountPassword(@PathVariable String username) {
-        System.out.println(accountRepository.findByUsername(username).getPassword());
         return accountRepository.findByUsername(username).getPassword();
     }
     @GetMapping("/users/{username}/exists")
