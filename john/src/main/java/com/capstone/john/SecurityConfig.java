@@ -19,7 +19,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig {
+public class SecurityConfig{
 
     private final AccountRepository accountRepository;
 
@@ -30,23 +30,22 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .csrf(csrf -> csrf.disable()) // Disable CSRF (for APIs)
+                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/admin/**").hasRole("ADMIN") // Restrict access
+                        .requestMatchers("/", "/newAccount", "/login", "/leaderboard", "/game", "/css/**", "/js/**").permitAll()
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/user/**").hasRole("USER")
                         .anyRequest().authenticated()
                 )
                 .formLogin(login -> login
-                        .defaultSuccessUrl("/home", true)
+                        .loginPage("/login")
+                        .loginProcessingUrl("/perform_login")
+                        .defaultSuccessUrl("/game", true)
                         .permitAll()
-                )
-                .rememberMe(remember -> remember
-                        .key("uniqueAndSecret")
-                        .tokenValiditySeconds(7 * 24 * 60 * 60)
                 )
                 .logout(logout -> logout
                         .logoutUrl("/logout")
-                        .logoutSuccessUrl("/login")
+                        .logoutSuccessUrl("/login?logout")
                         .deleteCookies("JSESSIONID")
                         .invalidateHttpSession(true)
                 )
@@ -55,12 +54,12 @@ public class SecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder(); // Encrypt passwords
+        return new BCryptPasswordEncoder();
     }
 
     @Bean
-    public UserDetailsService userDetailsService(AccountRepository accountRepository, PasswordEncoder passwordEncoder) {
-        return new CustomUserDetailsService(accountRepository, passwordEncoder);
+    public UserDetailsService userDetailsService() {
+        return new CustomUserDetailsService(accountRepository, passwordEncoder());
     }
 
     @Bean

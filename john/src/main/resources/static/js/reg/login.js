@@ -1,120 +1,105 @@
 const loginheader = document.querySelector('.login-header')
 const usernamein = document.querySelector(".username input")
 const passwordin = document.querySelector(".password input")
-const passwordconfirmin = document.querySelector(".confirm-password input")
-const username = document.querySelector(".username")
 const passwordfield = document.querySelector(".password")
-const passwordconfirm = document.querySelector(".confirm-password")
 const submitBtn = document.querySelector(".login-button")
 const transformBtn = document.querySelector(".page-transform-button")
 const minitext = document.querySelector(".minitext")
+const regBtn = document.querySelector(".register-button")
+const modal = document.querySelector(".modal")
+const span = document.querySelector(".close")
+const usrReg = document.querySelector(".regusername input")
+const pssReg = document.querySelector(".regpassword input")
+const pssCfmReg = document.querySelector(".regconfirmpassword input")
 
-let pageState = true;
-let givenUsername;
-let password;
+async function login(event){
+    if(event) event.preventDefault()
 
+    const username = usernamein.value
+    const password = passwordin.value
 
-
-function constructLogIn(){
-    pageState = true;
-    loginheader.innerHTML = "Log In"
-    passwordconfirm.classList.add('hidden')
-    submitBtn.innerHTML = "Log In"
-    transformBtn.innerHTML = "Sign Up"
-    minitext.innerHTML = "Don't have an account yet? Register here:"
-}
-
-function constructRegPage(){
-    pageState = false;
-    loginheader.innerHTML = "Register"
-    passwordconfirm.classList.remove('hidden')
-    submitBtn.innerHTML = "Sign Up"
-    transformBtn.innerHTML = "Log In"
-    minitext.innerHTML = "Actually, I already have an account!"
-}
-
-async function registerAcc(){
-    if(!(passwordin.value == passwordconfirmin.value)){
-        return;
-    }
-    const newPassword = passwordin.value
-    const newUsername = usernamein.value
+    const data = new URLSearchParams()
+    data.append("username", username)
+    data.append("password", password)
 
     try{
-        const newAccount = await fetch('http://localhost:8080/newAccount', {
-            method: 'POST',
+        const response = await fetch("/perform_login", {
+            method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/x-www-form-urlencoded",
             },
-            body: JSON.stringify({
-                username: newUsername,
-                password: newPassword
-            })
-        }).then(response =>{
-            if(!response.ok){
-                throw new Error('HTTP Error, Status: ' + response.status)
-            }
-            return response.json()
-        }).then(responseData =>{
-            console.log("Success: ", responseData)
-        }).catch(error => {
-            console.error("Error: ", error)
+            body: data,
+            credentials: "include"
         })
-        await console.log("account created")
-    }
-
-        catch(error){
-            console.log("Error creating account " + error)
-        }
-
-}
-async function login() {
-    try {
-        password = (await fetch('http://localhost:8080/users/' + givenUsername + "/password"))
-        password = await password.text()
-
-        if(password === passwordin.value){
-            console.log("Confirmed")
-        }
-        else{
-            console.log("Incorrect Username or Password")
-        }
-    } catch (error) {
-        console.error("Error")
-    }
-}
-
-
-
-constructLogIn()
-
-transformBtn.addEventListener('click', ()=>{
-    pageState ? constructRegPage() : constructLogIn()
-})
-
-submitBtn.addEventListener('click', async () => {
-    givenUsername = usernamein.value
-
-    if(givenUsername === "") return
-
-    try {
-        const account = await fetch('http://localhost:8080/users/' + givenUsername)
-        let accountExists
-        await fetch('http://localhost:8080/users/'+givenUsername+"/exists").then(response => response.json()).then(data =>{
-            accountExists = data
-        })
-        if(accountExists !==  pageState) {
+        if(response.redirected && response.url.includes("/login?error")){
+            alert("Invalid Login Credentials")
             return
         }
-        if (pageState) {
-            login()
-        } else {
-            registerAcc()
+        if(response.ok){
+            localStorage.setItem("Username", username)
+            window.location.href = "/game"
+        } else{
+            alert("Invalid login credentials")
         }
-    }catch(error){
-        console.error("Error getting username: ", error)
+    }catch (error){
+        console.error("Error loggin in", error);
     }
-
-
+}
+transformBtn.addEventListener("click", function(){
+    modal.style.display = "flex"
 })
 
+async function addAccount(event){
+    if(pssReg.value != pssCfmReg.value){
+        alert("Passwords do not match!")
+    }
+
+    else{
+        try {
+            const response = await fetch("/newAccount", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    username: usrReg.value,
+                    password: pssReg.value
+                })
+            });
+
+            const responseData = await response.json(); // Parse the JSON response
+
+            if (response.ok) {
+                alert(responseData.message); // Display the success message
+            } else {
+                alert(responseData.message); // Display the error message
+            }
+        } catch (error) {
+            console.error("Error creating account:", error);
+        }
+    }
+}
+
+function register(){
+    modal.style.display = "block";
+    document.querySelector(".login-form").removeEventListener()
+
+}
+
+function closeModal(){
+    modal.style.display = "none";
+    document.querySelector(".login-form").addEventListener("submit", function(event){
+        login(event)
+    });
+}
+
+span.onclick = closeModal
+window.onclick = function(event){
+    if(event.target == modal){
+        modal.style.display = "none";
+    }
+}
+regBtn.addEventListener("click", addAccount)
+document.querySelector(".login-form").addEventListener("submit", function(event){
+    login(event)
+});
