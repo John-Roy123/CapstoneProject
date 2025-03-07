@@ -67,12 +67,12 @@ async function addAccount(event){
                 })
             });
 
-            const responseData = await response.json(); // Parse the JSON response
+            const responseData = await response.json();
 
             if (response.ok) {
-                alert(responseData.message); // Display the success message
+                alert(responseData.message);
             } else {
-                alert(responseData.message); // Display the error message
+                alert(responseData.message);
             }
         } catch (error) {
             console.error("Error creating account:", error);
