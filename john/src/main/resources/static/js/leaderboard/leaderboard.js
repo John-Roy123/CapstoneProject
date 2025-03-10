@@ -27,9 +27,6 @@ async function populateLeaderboard(){
     }
 }
 
-
-
-
 populateLeaderboard()
 
 button.addEventListener('click', ()=>{

@@ -7,6 +7,7 @@ const timerLabel = document.querySelector('.timer');
 let firstNumber = 0;
 let secondNumber = 0;
 let p1Score = 0;
+let username;
 
 
 //Function for the timer at the top of the screen during game
@@ -32,13 +33,14 @@ function startTimer(duration) {
 
 }
 
-//changes game state to over and changes screen depending on who won
 function gameOver(){
     window.removeEventListener('keyup', checkAnswer);
     timerLabel.classList.add('hidden');
     newGame.classList.remove('hidden');
     newGame.addEventListener('click', setGame);
-    submitScore()
+    submitScore().then(r => function(){
+        alert("Score submitted!")
+    })
 }
 
 //checks if input is correct
@@ -63,32 +65,33 @@ function generateProblem(){
 
 //Sets game back to default state
 function setGame(){
+    username = localStorage.getItem("Username")
+    if(username == null){
+        username = "Guest"
+    }
     timerLabel.classList.remove('hidden');
     newGame.removeEventListener('click', setGame);
     document.body.classList.add('gameBackground');
     newGame.classList.add('hidden');
-    startTimer(60);
+    startTimer(20);
     window.addEventListener('keyup', checkAnswer);
     generateProblem();
     inputLabel.textContent = "";
     p1ScoreLabel.textContent = 0;
-    p2ScoreLabel.textContent = 0;
     document.getElementById('name--0').textContent = "Player 1";
     document.getElementById('name--1').textContent = "Player 2";
 }
 
 async function submitScore(){
     try{
-        let date = new Date()
         await fetch('http://localhost:8080/postGame',{
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                username: username,
-                score: p1Score,
-                date: date.getDate()
+                accountUsername: username,
+                score: p1Score
             })
         })
     }catch(error){
