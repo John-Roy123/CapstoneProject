@@ -26,4 +26,7 @@ public class GameController {
         public String index(){
         return "game";
 }
+
+        @RequestMapping("/account")
+        public String account(){ return "account";}
 }
