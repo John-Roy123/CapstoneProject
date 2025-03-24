@@ -56,10 +56,10 @@ public class AccountController {
         return ResponseEntity.ok(toReturn);
     }
 
-    @GetMapping("/topScore/{username}")
-    public int getTopScore(@PathVariable String username){
-        return accountRepository.findByUsername(username).getTopScore();
-    }
+//    @GetMapping("/topScore/{username}")
+//    public int getTopScore(@PathVariable String username){
+//        return accountRepository.findByUsername(username).getTopScore();
+//    }
     @PutMapping ("/topScore/{username}/{score}")
     public int putTopScore(@PathVariable String username, @PathVariable String score){
         int newScore = Integer.parseInt(score);

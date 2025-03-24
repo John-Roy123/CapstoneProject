@@ -24,4 +24,19 @@ public class GameResultController {
     public List<game_result> getLeaderboard() {
         return gameResultRepository.findTop10ByOrderByScoreDesc();
     }
+    @GetMapping("/topScore/{username}")
+    public int getTopScore(@PathVariable String username){
+
+        if(gameResultRepository.findTopByAccountUsernameOrderByScoreDesc(username).isPresent()){
+            return gameResultRepository.findTopByAccountUsernameOrderByScoreDesc(username).get().getScore();
+        }
+        else{
+            return -1;
+        }
+    }
+    @GetMapping("/averageScore/{username}")
+    public Double getAverageScore(@PathVariable String username){
+        Double avgScore = gameResultRepository.findAvgScoreByAccountUsername(username);
+        return avgScore;
+    }
 }

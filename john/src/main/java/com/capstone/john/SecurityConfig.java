@@ -32,7 +32,10 @@ public class SecurityConfig{
         return http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/","/getLeaderboard", "/postGame", "/newAccount", "/login", "/leaderboard", "/game", "/css/**", "/js/**").permitAll()
+                        .requestMatchers("/","/getLeaderboard","/topScore/**",
+                                "/account","/postGame", "/newAccount", "/login",
+                                "/leaderboard", "/game", "/css/**", "/js/**").permitAll()
+                        .requestMatchers("/averageScore/**").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/user/**").hasRole("USER")
                         .anyRequest().authenticated()
