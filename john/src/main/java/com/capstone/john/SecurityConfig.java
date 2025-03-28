@@ -33,7 +33,7 @@ public class SecurityConfig{
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/","/getLeaderboard","/topScore/**",
-                                "/account","/postGame", "/newAccount", "/login",
+                                "/account","/account/**","/postGame", "/newAccount", "/login", "/users/**",
                                 "/leaderboard", "/game", "/css/**", "/js/**").permitAll()
                         .requestMatchers("/averageScore/**").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
@@ -43,7 +43,7 @@ public class SecurityConfig{
                 .formLogin(login -> login
                         .loginPage("/login")
                         .loginProcessingUrl("/perform_login")
-                        .defaultSuccessUrl("/game", true)
+                        .defaultSuccessUrl("/account", true)
                         .permitAll()
                 )
                 .logout(logout -> logout

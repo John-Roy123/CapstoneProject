@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -55,6 +56,13 @@ public class AccountController {
         boolean toReturn = accountRepository.findByUsername(username) != null;
         return ResponseEntity.ok(toReturn);
     }
+
+//    @GetMapping("/account/{accountName}")
+//    public String getAccountPage(@PathVariable("accountName") String accountName, Model model) {
+//        Accounts account = accountRepository.findByUsername(accountName);
+//        model.addAttribute("account", account);
+//        return "account";
+//    }
 
 //    @GetMapping("/topScore/{username}")
 //    public int getTopScore(@PathVariable String username){

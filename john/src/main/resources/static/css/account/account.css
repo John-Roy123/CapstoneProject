@@ -157,7 +157,7 @@ label input:focus + .placeholder{
   display: grid;
   width: 100%;
   grid-auto-flow: column;
-  column-gap: 80%;
+  column-gap: 40%;
   position: relative;
   position: absolute;
   bottom: 0;
