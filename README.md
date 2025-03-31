@@ -9,7 +9,7 @@ Java backend, and a database attached
 
 ## Technologies Used in this project:
     Spring boot (backend)
-    MySql Server (for storing account information)
+    MySql Server (database)
 
 
 
