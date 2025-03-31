@@ -17,4 +17,4 @@ Java backend, and a database attached
     Users will be able to make their own accounts and those accounts will store their top score.
     Users will be able to log in and out of their accounts
     Users will also be able to view their own gameplay statistics on their account page, and look up other users
-    Users will be able to access a leaderboard of the top 10 fastest playtimes in the system.
+    Users will be able to access a leaderboard of the top 10 highest scores.
