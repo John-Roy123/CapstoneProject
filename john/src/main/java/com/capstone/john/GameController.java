@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Controller
 public class GameController {
 
-
+        //maps URL requests to specific HTML pages
         @RequestMapping("/")
         public String landing(){
             return "landing";

@@ -1,8 +1,6 @@
 const modal = document.querySelector('.modal');
-const overlay = document.querySelector('.overlay');
 const gameButton = document.querySelector('.open-modal');
 const leaderboard = document.getElementById('leaderboard')
-const mainElement = document.querySelector('.friends-list-container');
 const highScore = document.getElementById('hsNumber')
 const averageScore = document.getElementById('avgNumber')
 const usernameHeader = document.querySelector('.account-header')
@@ -10,6 +8,10 @@ const logoutbtn = document.getElementById('logout')
 let username = localStorage.getItem("Username")
 let pathUsername = window.location.pathname
 
+
+//piece of logic to determine if A: User is logged in and B: if user is looking at their own or someone else's account
+//if not logged in, they are redirected to the login page and if they are logged in, it shows the account details of
+// the account in the URL (defaults to their account)
 if(username == null){
   window.location.href = "http://localhost:8080/login"
 }else if(pathUsername != "/account"){
@@ -24,8 +26,8 @@ else{
 
 
 usernameHeader.innerHTML = username
-//console.log("/topScore/"+username)
 
+//Checks if the username in the URL exists in the database, and if not redirects to the login page
 async function checkUserExists(){
   try {
     const fetchAccount = fetch("/users/" + username + "/exists", {
@@ -34,22 +36,18 @@ async function checkUserExists(){
         "Content-Type": "application/x-www-form-urlencoded",
       }
     }).then(response => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
+      if (!response.ok) {throw new Error("Network response was not ok");}
       return response.json();
     })
         .then(data => {
-          console.log("Boolean value from server:", data);
-          if (data === false) {
-            window.location.href = "http://localhost:8080/login"
-          }
+          if (data === false) {window.location.href = "http://localhost:8080/login"}
         })
   } catch (error) {
     console.error("Error Setting High Score", error);
   }
 }
 
+//Fetch request to the server that pulls the high score from the database then assigns it to the innerHTML of the high score label
 async function setHighScore() {
   try {
     const fetchHighScore = fetch("/topScore/" + username, {
@@ -63,6 +61,8 @@ async function setHighScore() {
     console.error("Error Setting High Score", error);
   }
 }
+
+//Fetch request to the server that pulls the average score from the database then assigns it to the innerHTML of the average score label
 async function setAverageScore() {
   try {
     const fetchAvScore = fetch("/averageScore/" + username, {
@@ -72,9 +72,8 @@ async function setAverageScore() {
       }
     })
     averageScore.innerHTML = await (await fetchAvScore).text();
-  } catch (error) {
-    console.error("Error Setting Average Score", error);
   }
+  catch (error) {console.error("Error Setting Average Score", error);}
 }
 
 setHighScore()
@@ -92,13 +91,5 @@ leaderboard.addEventListener('click', ()=>{
 
 logoutbtn.addEventListener('click', ()=>{
   localStorage.removeItem("Username")
-  //document.cookie = "JSESSIONID=0; expires Thu, 18 Dec 2000 12:00:00 UTC"
   window.location.href = "http://localhost:8080/login"
 })
-
-document.addEventListener('keydown', function (e) {
-
-  if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-    closeModal();
-  }
-});

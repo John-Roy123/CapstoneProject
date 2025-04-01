@@ -3,7 +3,7 @@ const mainElement = document.querySelector('main')
 const button = document.querySelector('button')
 let leaderboardList;
 
-
+//Fetches the top 10 games from the server then populates the leaderboard with the username and score of the game
 async function populateLeaderboard(){
     try {
         const leaderboard = (await fetch("/getLeaderboard", {

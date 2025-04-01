@@ -27,6 +27,9 @@ public class SecurityConfig{
         this.accountRepository = accountRepository;
     }
 
+    //Bean to lock down user permissions in the URL to prevent users getting into unwanted data
+    //Sets a list of allowed URLs and then declares the URL for the login page and successful login API request
+    //Also sets a logout URL and API request
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
@@ -65,6 +68,7 @@ public class SecurityConfig{
         return new CustomUserDetailsService(accountRepository, passwordEncoder());
     }
 
+    //Creates and stores the password encoder that deals with hashing and decrypting user data stored in DB (passwords)
     @Bean
     public AuthenticationManager authenticationManager(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();

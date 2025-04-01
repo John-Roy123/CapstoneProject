@@ -17,7 +17,7 @@ public class DataInitializer implements CommandLineRunner {
         this.accountRepository = accountRepository;
         this.passwordEncoder = passwordEncoder;
     }
-
+//creates the admin account by default if no admin account is found in DB
     @Override
     public void run(String... args){
         if(accountRepository.findByUsername("admin") == null){

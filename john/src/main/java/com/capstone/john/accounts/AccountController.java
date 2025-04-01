@@ -1,11 +1,9 @@
 package com.capstone.john.accounts;
 
-import com.capstone.john.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -20,6 +18,7 @@ public class AccountController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    //Saves a new account into the database
     @PostMapping("/newAccount")
     public ResponseEntity<Map<String, String>> registerUser(@RequestBody Accounts account) {
         Map<String, String> response = new HashMap<>();
@@ -37,37 +36,29 @@ public class AccountController {
         response.put("message", "Username already exists");
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
     }
-
+    //Returns all accounts listed in database
     @GetMapping("/users")
     public List<Accounts> getAllAccounts(){
         return accountRepository.findAll();
     }
-
+    //Returns the account for a given username
     @GetMapping("/users/{username}")
     public Accounts getAccount(@PathVariable String username) {
         return accountRepository.findByUsername(username);
     }
+    //Returns the password of a given account
     @GetMapping("/users/{username}/password")
     public String getAccountPassword(@PathVariable String username) {
         return accountRepository.findByUsername(username).getPassword();
     }
+    //Returns a boolean determining whether a given user exists
     @GetMapping("/users/{username}/exists")
     public ResponseEntity<Boolean> existsAccount(@PathVariable String username) {
         boolean toReturn = accountRepository.findByUsername(username) != null;
         return ResponseEntity.ok(toReturn);
     }
 
-//    @GetMapping("/account/{accountName}")
-//    public String getAccountPage(@PathVariable("accountName") String accountName, Model model) {
-//        Accounts account = accountRepository.findByUsername(accountName);
-//        model.addAttribute("account", account);
-//        return "account";
-//    }
-
-//    @GetMapping("/topScore/{username}")
-//    public int getTopScore(@PathVariable String username){
-//        return accountRepository.findByUsername(username).getTopScore();
-//    }
+    //Posts a new top score to an Accounts db table
     @PutMapping ("/topScore/{username}/{score}")
     public int putTopScore(@PathVariable String username, @PathVariable String score){
         int newScore = Integer.parseInt(score);
@@ -75,12 +66,7 @@ public class AccountController {
         accountRepository.save(accountRepository.findByUsername(username));
         return newScore;
     }
-    @DeleteMapping("/deleteUser")
-    public String deleteUser(@RequestBody Accounts account){
-        accountRepository.findByUsername(account.getUsername());
-        accountRepository.delete(account);
-        return account.getUsername()+"Deleted";
-    }
+
 
 
 

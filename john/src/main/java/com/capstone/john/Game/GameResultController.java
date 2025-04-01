@@ -10,20 +10,23 @@ public class GameResultController {
 
     @Autowired
     private GameResultRepository gameResultRepository;
-
+    //Posts new game to the database
     @PostMapping("/postGame")
     public game_result addGame(@RequestBody game_result gameResult) {
         return gameResultRepository.save(gameResult);
     }
-
+    //Gets game by gameid
     @GetMapping("/getGame/{gameid}")
     public game_result getGame(@RequestBody game_result gameResult, @PathVariable long gameid) {
         return gameResultRepository.findGameById(gameid);
     }
+    //Gets the top 10 games from the database -- equivalent to the query
+    //SELECT * FROM game_result ORDER BY score desc LIMIT 10;
     @GetMapping("/getLeaderboard")
     public List<game_result> getLeaderboard() {
         return gameResultRepository.findTop10ByOrderByScoreDesc();
     }
+    //Returns the largest score associated with a user in the database, defaults 0
     @GetMapping("/topScore/{username}")
     public int getTopScore(@PathVariable String username){
 
@@ -31,9 +34,10 @@ public class GameResultController {
             return gameResultRepository.findTopByAccountUsernameOrderByScoreDesc(username).get().getScore();
         }
         else{
-            return -1;
+            return 0;
         }
     }
+    //Returns the average of all scores associated with a user in the database
     @GetMapping("/averageScore/{username}")
     public Double getAverageScore(@PathVariable String username){
         Double avgScore = gameResultRepository.findAvgScoreByAccountUsername(username);

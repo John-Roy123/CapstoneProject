@@ -12,6 +12,9 @@ const usrReg = document.querySelector(".regusername input")
 const pssReg = document.querySelector(".regpassword input")
 const pssCfmReg = document.querySelector(".regconfirmpassword input")
 
+
+//Takes the user data from the login form and sends that info to the spring security "perform_login" request that is
+//in the security config and checks the user data against that in the database (after decrypting the password in the database)
 async function login(event){
     if(event) event.preventDefault()
 
@@ -37,7 +40,7 @@ async function login(event){
         }
         if(response.ok){
             localStorage.setItem("Username", username)
-            window.location.href = "/game"
+            window.location.href = "/account"
         } else{
             alert("Invalid login credentials")
         }
@@ -45,10 +48,11 @@ async function login(event){
         console.error("Error loggin in", error);
     }
 }
-transformBtn.addEventListener("click", function(){
-    modal.style.display = "flex"
-})
 
+
+transformBtn.addEventListener("click", function(){modal.style.display = "flex"})
+
+//Function to add an account into the database. Confirms passwords match first then goes ahead and POSTs the user data to the database to be stored
 async function addAccount(event){
     if(pssReg.value != pssCfmReg.value){
         alert("Passwords do not match!")
