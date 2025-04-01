@@ -38,10 +38,11 @@ function startTimer(duration) {
 }
 
 function gameOver(){
-    window.removeEventListener('keyup', checkAnswer);
-    timerLabel.classList.add('hidden');
-    newGame.classList.remove('hidden');
-    newGame.addEventListener('click', setGame);
+    window.removeEventListener('keyup', checkAnswer)
+    inputLabel.value = ""
+    timerLabel.classList.add('hidden')
+    newGame.classList.remove('hidden')
+    newGame.addEventListener('click', setGame)
     submitScore().then(r => function(){
         alert("Score submitted!")
     })
@@ -51,7 +52,7 @@ function gameOver(){
 function checkAnswer(){
     let answer
 
-    if(gameMode == "multiply"){ answer= firstNumber*secondNumber;}
+    if(gameMode == "mult"){ answer= firstNumber*secondNumber;}
     else{answer = firstNumber+secondNumber;}
 
     if(Number(inputLabel.value) === answer){
@@ -60,7 +61,7 @@ function checkAnswer(){
         p1ScoreLabel.textContent = p1Score;
         generateProblem()
         inputLabel.value = "";
-    }else if(answer.toString().length === inputLabel.value.length){
+    }else if(answer.toString().length <= inputLabel.value.length){
         inputLabel.value = ""
     }
 
@@ -70,7 +71,7 @@ function checkAnswer(){
 function generateProblem(){
     firstNumber = Math.trunc(Math.random() * 10 + 1);
     secondNumber = Math.trunc(Math.random() * 10 + 1);
-    if(gameMode == "multiply"){
+    if(gameMode == "mult"){
         problemLabel.textContent = `${firstNumber} x ${secondNumber}`
     }
     else{
@@ -110,7 +111,8 @@ async function submitScore(){
             },
             body: JSON.stringify({
                 accountUsername: username,
-                score: p1Score
+                score: p1Score,
+                gameMode: gameMode
             })
         })
     }catch(error){
@@ -135,7 +137,7 @@ function selectMode(){
         setGame()
     })
     multiplyGameBtn.addEventListener('click', ()=>{
-        gameMode = "multiply"
+        gameMode = "mult"
         setGame()
     })
 }
