@@ -132,7 +132,6 @@ main {
     appearance: textfield;
 }
 
-/* ABSOLUTE POSITIONED ELEMENTS */
 .btn {
     position: absolute;
     left: 50%;
@@ -164,6 +163,13 @@ main {
 
 .btn--new {
     top: 4rem;
+}
+
+.btn--add {
+    top: 10rem;
+}
+.btn--multiply {
+    top: 20rem;
 }
 
 .btn:active {

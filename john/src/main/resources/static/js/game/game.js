@@ -4,10 +4,14 @@ const inputLabel = document.querySelector('.current-answer');
 const p1ScoreLabel = document.getElementById('score')
 const correctSound = new Audio('click.mp3');
 const timerLabel = document.querySelector('.timer');
+const current = document.querySelector('.current')
+const addGameBtn = document.querySelector('.btn--add')
+const multiplyGameBtn = document.querySelector('.btn--multiply')
 let firstNumber = 0;
 let secondNumber = 0;
 let p1Score = 0;
 let username;
+let gameMode;
 
 
 //Function for the timer at the top of the screen during game
@@ -45,13 +49,19 @@ function gameOver(){
 
 //checks if input is correct
 function checkAnswer(){
-    let answer = firstNumber*secondNumber;
+    let answer
+
+    if(gameMode == "multiply"){ answer= firstNumber*secondNumber;}
+    else{answer = firstNumber+secondNumber;}
+
     if(Number(inputLabel.value) === answer){
         correctSound.play();
         p1Score++;
         p1ScoreLabel.textContent = p1Score;
         generateProblem()
         inputLabel.value = "";
+    }else if(answer.toString().length === inputLabel.value.length){
+        inputLabel.value = ""
     }
 
 }
@@ -60,7 +70,12 @@ function checkAnswer(){
 function generateProblem(){
     firstNumber = Math.trunc(Math.random() * 10 + 1);
     secondNumber = Math.trunc(Math.random() * 10 + 1);
-    problemLabel.textContent = `${firstNumber} x ${secondNumber}`;
+    if(gameMode == "multiply"){
+        problemLabel.textContent = `${firstNumber} x ${secondNumber}`
+    }
+    else{
+        problemLabel.textContent = `${firstNumber} + ${secondNumber}`
+    }
 }
 
 //Sets game back to default state
@@ -69,19 +84,23 @@ function setGame(){
     if(username == null){
         username = "Guest"
     }
-    timerLabel.classList.remove('hidden');
+    addGameBtn.classList.add('hidden')
+    multiplyGameBtn.classList.add('hidden')
+    problemLabel.classList.remove('hidden')
+    timerLabel.classList.remove('hidden')
+    p1ScoreLabel.classList.remove('hidden')
+    current.classList.remove('hidden')
     newGame.removeEventListener('click', setGame);
     document.body.classList.add('gameBackground');
     newGame.classList.add('hidden');
     startTimer(20);
     window.addEventListener('keyup', checkAnswer);
     generateProblem();
-    inputLabel.textContent = "";
+    inputLabel.value = "";
     p1ScoreLabel.textContent = 0;
-    document.getElementById('name--0').textContent = "Player 1";
-    document.getElementById('name--1').textContent = "Player 2";
 }
 
+//POSTs game to server which then inserts it into the database
 async function submitScore(){
     try{
         await fetch('http://localhost:8080/postGame',{
@@ -99,5 +118,26 @@ async function submitScore(){
     }
 }
 
-setGame();
+
+function selectMode(){
+    timerLabel.classList.add('hidden')
+    document.body.classList.add('gameBackground');
+    p1ScoreLabel.classList.add('hidden')
+    problemLabel.classList.add('hidden')
+    current.classList.add('hidden')
+    newGame.classList.add('hidden')
+
+    addGameBtn.classList.remove('hidden')
+    multiplyGameBtn.classList.remove('hidden')
+
+    addGameBtn.addEventListener('click', ()=>{
+        gameMode = "add"
+        setGame()
+    })
+    multiplyGameBtn.addEventListener('click', ()=>{
+        gameMode = "multiply"
+        setGame()
+    })
+}
+selectMode();
 
