@@ -13,14 +13,17 @@ async function populateLeaderboard(){
 
         })).text()
         leaderboardList = JSON.parse(await leaderboard)
+
     }catch(error){
         console.error(error)
     }
 
     for(let i = 0; i<leaderboardList.length; i++){
         const val = leaderboardList[i]
+        val.gameMode = val.gameMode.replace("mult", "multiplication")
+        val.gameMode = val.gameMode.replace("add", "addition")
         const newDiv = document.createElement('div')
-        newDiv.textContent = `Player ${val.accountUsername} -- Score: ${val.score}`
+        newDiv.textContent = `Player ${val.accountUsername} -- Score: ${val.score} -- Mode: ${val.gameMode}`
         newDiv.id = `Rank${i} Player`
         newDiv.classList.add('leaderboard-score')
         mainElement.appendChild(newDiv)

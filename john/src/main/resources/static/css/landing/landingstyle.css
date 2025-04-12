@@ -63,7 +63,7 @@ button:hover{
     margin: auto;
     place-items: center;
     display: grid;
-    width: 40%;
+    width: 60%;
     grid-auto-flow: column;
     column-gap: 35%;
 }

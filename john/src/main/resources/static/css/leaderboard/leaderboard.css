@@ -50,8 +50,7 @@ main {
     font-family: 'Neueu Machina Ultrabold';
     position: absolute;
     left: 0;
-    top: 50%;
-    transform: translateY(-50%) rotate(-90deg);
+    top: 0%;
     font-size: 8rem;
     color: white;
     font-weight: bold;

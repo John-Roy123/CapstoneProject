@@ -7,6 +7,7 @@ const timerLabel = document.querySelector('.timer');
 const current = document.querySelector('.current')
 const addGameBtn = document.querySelector('.btn--add')
 const multiplyGameBtn = document.querySelector('.btn--multiply')
+const returnBtn = document.querySelector('.btn--return')
 let firstNumber = 0;
 let secondNumber = 0;
 let p1Score = 0;
@@ -42,9 +43,13 @@ function gameOver(){
     inputLabel.value = ""
     timerLabel.classList.add('hidden')
     newGame.classList.remove('hidden')
+    returnBtn.classList.remove('hidden')
     newGame.addEventListener('click', setGame)
-    submitScore().then(r => function(){
-        alert("Score submitted!")
+    if(p1Score !== 0) {
+        submitScore()
+    }
+    returnBtn.addEventListener('click', () => {
+        window.location.href = "http://localhost:8080/account"
     })
 }
 
@@ -85,6 +90,7 @@ function setGame(){
     if(username == null){
         username = "Guest"
     }
+    returnBtn.classList.add('hidden')
     addGameBtn.classList.add('hidden')
     multiplyGameBtn.classList.add('hidden')
     problemLabel.classList.remove('hidden')
@@ -128,6 +134,7 @@ function selectMode(){
     problemLabel.classList.add('hidden')
     current.classList.add('hidden')
     newGame.classList.add('hidden')
+    returnBtn.classList.add('hidden')
 
     addGameBtn.classList.remove('hidden')
     multiplyGameBtn.classList.remove('hidden')
