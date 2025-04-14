@@ -1,12 +1,15 @@
 
 const mainElement = document.querySelector('main')
-const button = document.querySelector('button')
+const playButton = document.getElementById('play')
+const addButton = document.getElementById('add')
+const multButton = document.getElementById('mult')
 let leaderboardList;
+let serverCall = "/getLeaderboard"
 
 //Fetches the top 10 games from the server then populates the leaderboard with the username and score of the game
 async function populateLeaderboard(){
     try {
-        const leaderboard = (await fetch("/getLeaderboard", {
+        const leaderboard = (await fetch(serverCall, {
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
             },
@@ -32,7 +35,17 @@ async function populateLeaderboard(){
 
 populateLeaderboard()
 
-button.addEventListener('click', ()=>{
+playButton.addEventListener('click', ()=>{
     window.location.href = "http://localhost:8080/game"
+})
+addButton.addEventListener('click', ()=>{
+    mainElement.innerHTML = ""
+    serverCall = "/getLeaderboard/add"
+    populateLeaderboard()
+})
+multButton.addEventListener('click', ()=>{
+    mainElement.innerHTML = ""
+    serverCall = "/getLeaderboard/mult"
+    populateLeaderboard()
 })
 

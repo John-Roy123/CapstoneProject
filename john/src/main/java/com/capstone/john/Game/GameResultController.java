@@ -43,4 +43,14 @@ public class GameResultController {
         Double avgScore = gameResultRepository.findAvgScoreByAccountUsername(username);
         return avgScore;
     }
+
+    @GetMapping("/getLeaderboard/add")
+    public List<game_result> getLeaderboardAdd(){
+        return gameResultRepository.getAddGameLeaderboard();
+    }
+    @GetMapping("getLeaderboard/mult")
+    public List<game_result> getLeaderboardMult(){
+        return gameResultRepository.getMultGameLeaderboard();
+    }
+
 }

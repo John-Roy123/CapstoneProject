@@ -18,4 +18,11 @@ public interface GameResultRepository extends CrudRepository<game_result, Long> 
 
     @Query("SELECT AVG(g.score) FROM game_result g WHERE g.accountUsername = :username")
     Double findAvgScoreByAccountUsername(@Param("username") String username);
+
+    @Query("SELECT g FROM game_result g WHERE g.gameMode = 'mult' order by g.score DESC LIMIT 10")
+    List<game_result> getMultGameLeaderboard();
+
+    @Query("SELECT g FROM game_result g WHERE g.gameMode = 'add' order by g.score DESC LIMIT 10")
+    List<game_result> getAddGameLeaderboard();
+
 }

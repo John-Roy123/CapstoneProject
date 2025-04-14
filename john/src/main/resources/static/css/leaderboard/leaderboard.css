@@ -58,9 +58,9 @@ main {
 
 .button-container{
     position: absolute;
-    right: 0;
-    top: 50%;
+    top: 0;
     margin-right: 13rem;
+    padding: 3rem;
 }
 
 button{
