@@ -11,6 +11,7 @@ const span = document.querySelector(".close")
 const usrReg = document.querySelector(".regusername input")
 const pssReg = document.querySelector(".regpassword input")
 const pssCfmReg = document.querySelector(".regconfirmpassword input")
+const returnBtn = document.getElementById("return-button")
 
 
 //Takes the user data from the login form and sends that info to the spring security "perform_login" request that is
@@ -103,6 +104,9 @@ window.onclick = function(event){
         modal.style.display = "none";
     }
 }
+returnBtn.addEventListener("click", ()=>{
+    window.location.href = "http://localhost:8080/"
+})
 regBtn.addEventListener("click", addAccount)
 document.querySelector(".login-form").addEventListener("submit", function(event){
     login(event)
