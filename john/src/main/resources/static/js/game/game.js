@@ -2,12 +2,13 @@ const newGame = document.querySelector('.btn--new');
 const problemLabel = document.querySelector('.label-problem');
 const inputLabel = document.querySelector('.current-answer');
 const p1ScoreLabel = document.getElementById('score')
-const correctSound = new Audio('click.mp3');
 const timerLabel = document.querySelector('.timer');
 const current = document.querySelector('.current')
 const addGameBtn = document.querySelector('.btn--add')
 const multiplyGameBtn = document.querySelector('.btn--multiply')
 const returnBtn = document.querySelector('.btn--return')
+const correctSound = new Audio("audio/CorrectAnswer.wav")
+const incorrectSound = new Audio("audio/WrongAnswer.wav")
 let firstNumber = 0;
 let secondNumber = 0;
 let p1Score = 0;
@@ -68,6 +69,7 @@ function checkAnswer(){
         inputLabel.value = "";
     }else if(answer.toString().length <= inputLabel.value.length){
         inputLabel.value = ""
+        incorrectSound.play()
     }
 
 }

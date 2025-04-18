@@ -37,7 +37,8 @@ public class SecurityConfig{
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/","/getLeaderboard","/topScore/**",
                                 "/account","/account/**","/postGame", "/newAccount", "/login", "/users/**",
-                                "/leaderboard", "/game", "/css/**", "/js/**","/getLeaderboard/mult", "/getLeaderboard/add").permitAll()
+                                "/leaderboard", "/game", "/css/**", "/js/**","/getLeaderboard/mult", "/getLeaderboard/add",
+                                "/js/**","/css/**", "/images/**", "/audio/**").permitAll()
                         .requestMatchers("/averageScore/**").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/user/**").hasRole("USER")
