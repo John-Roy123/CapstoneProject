@@ -171,11 +171,21 @@ main {
 .btn--multiply {
     top: 20rem;
 }
+.btn--subtract {
+    top: 30rem;
+}
+.btn--divide {
+     top: 40rem;
+ }
 .btn--return{
     bottom: 2rem;
     padding: 2rem;
 }
 .btn--return::first-letter{
+    font-size: 1.8rem;
+    margin-right: 0;
+}
+.btn--subtract::first-letter{
     font-size: 1.8rem;
     margin-right: 0;
 }

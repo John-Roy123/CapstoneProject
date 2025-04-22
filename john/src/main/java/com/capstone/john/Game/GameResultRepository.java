@@ -25,4 +25,9 @@ public interface GameResultRepository extends CrudRepository<game_result, Long> 
     @Query("SELECT g FROM game_result g WHERE g.gameMode = 'add' order by g.score DESC LIMIT 10")
     List<game_result> getAddGameLeaderboard();
 
+    @Query("SELECT g FROM game_result g WHERE g.gameMode = 'division' order by g.score DESC LIMIT 10")
+    List<game_result> getDivideGameLeaderboard();
+
+    @Query("SELECT g FROM game_result g WHERE g.gameMode = 'sub' order by g.score DESC LIMIT 10")
+    List<game_result> getSubGameLeaderboard();
 }

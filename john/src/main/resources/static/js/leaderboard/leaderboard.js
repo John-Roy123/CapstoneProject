@@ -3,6 +3,8 @@ const mainElement = document.querySelector('main')
 const playButton = document.getElementById('play')
 const addButton = document.getElementById('add')
 const multButton = document.getElementById('mult')
+const diviButton = document.getElementById('division')
+const subButton = document.getElementById('subtraction')
 let leaderboardList;
 let serverCall = "/getLeaderboard"
 
@@ -23,8 +25,6 @@ async function populateLeaderboard(){
 
     for(let i = 0; i<leaderboardList.length; i++){
         const val = leaderboardList[i]
-        val.gameMode = val.gameMode.replace("mult", "multiplication")
-        val.gameMode = val.gameMode.replace("add", "addition")
         const newDiv = document.createElement('div')
         newDiv.textContent = `Player ${val.accountUsername} -- Score: ${val.score} -- Mode: ${val.gameMode}`
         newDiv.id = `Rank${i} Player`
@@ -46,6 +46,16 @@ addButton.addEventListener('click', ()=>{
 multButton.addEventListener('click', ()=>{
     mainElement.innerHTML = ""
     serverCall = "/getLeaderboard/mult"
+    populateLeaderboard()
+})
+diviButton.addEventListener('click', ()=>{
+    mainElement.innerHTML = ""
+    serverCall = "/getLeaderboard/divide"
+    populateLeaderboard()
+})
+subButton.addEventListener('click', ()=>{
+    mainElement.innerHTML = ""
+    serverCall = "/getLeaderboard/sub"
     populateLeaderboard()
 })
 

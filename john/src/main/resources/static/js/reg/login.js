@@ -76,6 +76,7 @@ async function addAccount(event){
 
             if (response.ok) {
                 alert(responseData.message);
+                closeModal()
             } else {
                 alert(responseData.message);
             }

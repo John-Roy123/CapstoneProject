@@ -52,5 +52,13 @@ public class GameResultController {
     public List<game_result> getLeaderboardMult(){
         return gameResultRepository.getMultGameLeaderboard();
     }
+    @GetMapping("getLeaderboard/divide")
+    public List<game_result> getLeaderboardDivide(){
+        return gameResultRepository.getDivideGameLeaderboard();
+    }
+    @GetMapping("getLeaderboard/sub")
+    public List<game_result> getLeaderboardSub(){
+        return gameResultRepository.getSubGameLeaderboard();
+    }
 
 }

@@ -59,26 +59,49 @@ main {
 .button-container{
     position: absolute;
     top: 0;
-    margin-right: 13rem;
-    padding: 3rem;
+    margin-right: 10rem;
+    padding: 7rem;
+    right: 2rem;
 }
 
 button{
     font-family: 'Neueu Machina Regular';
-    font-size: 2rem;
-    border-color: rgba(185,0,181,1);
-    color: rgb(248, 212, 218);
-    background: none;
+    appearance: none;
+    background-color: #000000;
+    border: 2px solid #1A1A1A;
+    border-radius: 15px;
+    box-sizing: border-box;
+    color: #FFFFFF;
     cursor: pointer;
-    transition: all .5s;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+    min-height: 60px;
+    min-width: 0;
+    outline: none;
+    padding: 16px 24px;
+    text-align: center;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    touch-action: manipulation;
+    width: 20%;
+    will-change: transform;
 }
 
 button:hover{
-    font-size: 2.3rem;
-    border-color: rgba(185,0,181,1);
-    color: rgb(247, 143, 160);
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
 }
+.button:active {
+    box-shadow: none;
+    transform: translateY(0);
+}
+#play{
+    position: absolute;
+    bottom: 0;
+    width: 10%;
 
+}
 .leaderboard-score {
     font-family: 'Neueu Machina Regular';
     color: white;

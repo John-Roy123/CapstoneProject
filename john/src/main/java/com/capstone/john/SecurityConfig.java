@@ -38,6 +38,7 @@ public class SecurityConfig{
                         .requestMatchers("/","/getLeaderboard","/topScore/**",
                                 "/account","/account/**","/postGame", "/newAccount", "/login", "/users/**",
                                 "/leaderboard", "/game", "/css/**", "/js/**","/getLeaderboard/mult", "/getLeaderboard/add",
+                                "/getLeaderboard/divide", "getLeaderboard/sub",
                                 "/js/**","/css/**", "/images/**", "/audio/**").permitAll()
                         .requestMatchers("/averageScore/**").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")

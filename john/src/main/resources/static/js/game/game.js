@@ -6,8 +6,10 @@ const timerLabel = document.querySelector('.timer');
 const current = document.querySelector('.current')
 const addGameBtn = document.querySelector('.btn--add')
 const multiplyGameBtn = document.querySelector('.btn--multiply')
+const subtractGameBtn = document.querySelector('.btn--subtract')
+const divideGameBtn = document.querySelector('.btn--divide')
 const returnBtn = document.querySelector('.btn--return')
-const correctSound = new Audio("audio/CorrectAnswer.wav")
+const correctSound = new Audio("audio/CorrectAnswer.mp3")
 const incorrectSound = new Audio("audio/WrongAnswer.wav")
 let firstNumber = 0;
 let secondNumber = 0;
@@ -45,7 +47,7 @@ function gameOver(){
     timerLabel.classList.add('hidden')
     newGame.classList.remove('hidden')
     returnBtn.classList.remove('hidden')
-    newGame.addEventListener('click', setGame)
+    newGame.addEventListener('click', selectMode)
     if(p1Score !== 0) {
         submitScore()
     }
@@ -58,8 +60,10 @@ function gameOver(){
 function checkAnswer(){
     let answer
 
-    if(gameMode == "mult"){ answer= firstNumber*secondNumber;}
-    else{answer = firstNumber+secondNumber;}
+    if(gameMode == "multiplication"){ answer= firstNumber*secondNumber;}
+    else if(gameMode == "addition"){answer = firstNumber+secondNumber;}
+    else if(gameMode == "subtraction"){answer = firstNumber-secondNumber;}
+    else{answer = firstNumber/secondNumber}
 
     if(Number(inputLabel.value) === answer){
         correctSound.play();
@@ -76,13 +80,22 @@ function checkAnswer(){
 
 //creates a new math problem
 function generateProblem(){
-    firstNumber = Math.trunc(Math.random() * 10 + 1);
+    firstNumber = Math.trunc(Math.random() * 25 + 1);
     secondNumber = Math.trunc(Math.random() * 10 + 1);
+
     if(gameMode == "mult"){
         problemLabel.textContent = `${firstNumber} x ${secondNumber}`
     }
-    else{
+    else if(gameMode == "add"){
         problemLabel.textContent = `${firstNumber} + ${secondNumber}`
+    }
+    else if(gameMode == "subtraction"){
+        if(firstNumber<secondNumber){generateProblem()}
+        problemLabel.textContent = `${firstNumber} - ${secondNumber}`
+    }
+    else if(gameMode == "division"){
+        if(firstNumber%secondNumber !== 0){generateProblem()}
+        problemLabel.textContent = `${firstNumber} ÷ ${secondNumber}`
     }
 }
 
@@ -95,6 +108,8 @@ function setGame(){
     returnBtn.classList.add('hidden')
     addGameBtn.classList.add('hidden')
     multiplyGameBtn.classList.add('hidden')
+    divideGameBtn.classList.add('hidden')
+    subtractGameBtn.classList.add('hidden')
     problemLabel.classList.remove('hidden')
     timerLabel.classList.remove('hidden')
     p1ScoreLabel.classList.remove('hidden')
@@ -130,23 +145,33 @@ async function submitScore(){
 
 
 function selectMode(){
+    addGameBtn.classList.remove('hidden')
+    multiplyGameBtn.classList.remove('hidden')
     timerLabel.classList.add('hidden')
-    document.body.classList.add('gameBackground');
+    document.body.classList.add('gameBackground')
     p1ScoreLabel.classList.add('hidden')
     problemLabel.classList.add('hidden')
     current.classList.add('hidden')
     newGame.classList.add('hidden')
     returnBtn.classList.add('hidden')
 
-    addGameBtn.classList.remove('hidden')
-    multiplyGameBtn.classList.remove('hidden')
+    divideGameBtn.classList.remove('hidden')
+    subtractGameBtn.classList.remove('hidden')
 
     addGameBtn.addEventListener('click', ()=>{
-        gameMode = "add"
+        gameMode = "addition"
+        setGame()
+    })
+    subtractGameBtn.addEventListener('click', ()=>{
+        gameMode = "subtraction"
+        setGame()
+    })
+    divideGameBtn.addEventListener('click', ()=>{
+        gameMode = "division"
         setGame()
     })
     multiplyGameBtn.addEventListener('click', ()=>{
-        gameMode = "mult"
+        gameMode = "multiplication"
         setGame()
     })
 }
