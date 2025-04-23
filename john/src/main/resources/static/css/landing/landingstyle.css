@@ -26,6 +26,39 @@
     
 }
 
+.nav{
+    background-color: #000000;
+    overflow: hidden;
+}
+
+.nav input{
+    float: right;
+    padding: 0.5rem;
+    border: none;
+    margin-right: 16px;
+    font-size: 17px;
+}
+
+.nav a{
+    float: left;
+    color: white;
+    font-family: 'Neueu Machina Ultrabold', serif;
+    text-align: center;
+    font-size: 1.4rem;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.nav a:hover{
+    background-color: #333333;
+    color: white;
+}
+
+.nav a.active{
+    background-color: #1A1A1A;
+    color: white;
+}
+
 .column-left h1{
     margin-bottom: .5rem;
     font-size: 5rem;
@@ -42,31 +75,7 @@
     opacity: 1.2s;
 }
 
-button{
-    font-family: 'Neueu Machina Regular';
-    font-size: 2rem;
-    border-color: rgba(185,0,181,1);
-    color: pink;
-    background: black;
-    cursor: pointer;
-}
 
-button:hover{
-    font-size: 2.3rem;
-    border-color: rgba(185,0,181,1);
-    color: rgb(247, 143, 160);
-}
-
-
-
-.button-container{
-    margin: auto;
-    place-items: center;
-    display: grid;
-    width: 60%;
-    grid-auto-flow: column;
-    column-gap: 35%;
-}
 
 .githubdiv{
     margin: 50px;

@@ -6,6 +6,16 @@
     <link rel ="stylesheet" href = "css/landing/landingstyle.css?v=2">
 </head>
 <body>
+<div class = "nav">
+    <a class = "Game" href = "http://localhost:8080/game">Play Now</a>
+    <a class = "Leaderboard" href = "http://localhost:8080/leaderboard">Leaderboard</a>
+    <a class = "Login" href = "http://localhost:8080/login">Login</a>
+    <div id = "dropdown">
+        <input id = "search-input" type = "text" placeholder="Search for a player">
+        <a id = dropdownItem></a>
+    </div>
+
+</div>
     <section class = "hero">
         <div class = "hero-container">
             <div class = column-left>
@@ -14,9 +24,6 @@
             </div>
         </div>
         <div class = "button-container">
-            <button class = "signin">Sign In</button>
-            <button class = "leaderboard">Leaderboard</button>
-            <button class = "playasguest">Play as Guest</button>
         </div>
         <div class = "githubdiv">
             <img src = "css/landing/githublogo.png" alt = "illustration" class = "github-logo">

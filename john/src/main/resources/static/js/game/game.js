@@ -52,7 +52,7 @@ function gameOver(){
         submitScore()
     }
     returnBtn.addEventListener('click', () => {
-        window.location.href = "http://localhost:8080/account"
+        window.location.href = "http://localhost:8080/"
     })
 }
 
@@ -83,10 +83,10 @@ function generateProblem(){
     firstNumber = Math.trunc(Math.random() * 25 + 1);
     secondNumber = Math.trunc(Math.random() * 10 + 1);
 
-    if(gameMode == "mult"){
+    if(gameMode == "multiplication"){
         problemLabel.textContent = `${firstNumber} x ${secondNumber}`
     }
-    else if(gameMode == "add"){
+    else if(gameMode == "addition"){
         problemLabel.textContent = `${firstNumber} + ${secondNumber}`
     }
     else if(gameMode == "subtraction"){
