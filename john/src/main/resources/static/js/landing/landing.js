@@ -2,16 +2,30 @@ const signin = document.querySelector(".signin")
 const leaderboard = document.querySelector(".leaderboard")
 const github = document.querySelector('.github')
 const playAsGuest = document.querySelector('.playasguest')
-const searchInput = document.getElementById('#search-input')
-const dropdown = document.getElementById('#dropdownItem')
+const dropdown = document.getElementById('dropdownItem')
+let usernameList
+const accounts = fetch('http://localhost:8080/users').then(response => response.json()).then(data => {
+    usernameList = data.map(user => user.username)
+}).catch(error => {
+    console.log(error)
+})
+const input = document.getElementById("search-input")
 
 
-async function searchForPlayer(){
+//Allows users to search for accounts - removes spaces from input before searching to prevent edge case issues
+//Checks user input against list of users
+input.addEventListener("keyup", ((e)=>{
+    const inputNoSpaces = input.value.replace(/\s/g, '')
+    if(e.key == "Enter"){
+        console.log(usernameList)
+        if(usernameList.includes(inputNoSpaces)) {
+            let url = "http://localhost:8080/account/" + input.value
+            window.location.href = url
+        } else{alert("User does not exist!")}
+    }
+}))
 
-}
-
-searchInput.addEventListener("keyup", searchForPlayer())
-
+//Redirects user to the associated page for each button they press
 signin.addEventListener('click', ()=>{
     window.location.href = "http://localhost:8080/login"
 })

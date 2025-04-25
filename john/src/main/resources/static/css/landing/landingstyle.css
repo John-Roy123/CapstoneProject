@@ -7,6 +7,8 @@
     src: url(NeueMachina-Ultrabold.otf);
 }
 
+
+
 *{
     box-sizing: border-box;
     margin: 0;
@@ -37,6 +39,16 @@
     border: none;
     margin-right: 16px;
     font-size: 17px;
+    list-style: none;
+}
+
+.nav input li{
+    padding: 10px;
+    cursor: pointer;
+}
+
+.nav input li:hover{
+    background-color: #eee;
 }
 
 .nav a{

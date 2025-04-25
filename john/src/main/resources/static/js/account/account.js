@@ -12,7 +12,7 @@ let pathUsername = window.location.pathname
 //piece of logic to determine if A: User is logged in and B: if user is looking at their own or someone else's account
 //if not logged in, they are redirected to the login page and if they are logged in, it shows the account details of
 // the account in the URL (defaults to their account)
-if(username == null){
+if(username == null && pathUsername == "/account" || pathUsername == "/account/"){
   window.location.href = "http://localhost:8080/login"
 }else if(pathUsername != "/account"){
   pathUsername = pathUsername.replace("/account/","")
