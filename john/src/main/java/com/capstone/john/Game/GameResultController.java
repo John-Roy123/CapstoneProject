@@ -44,6 +44,8 @@ public class GameResultController {
         return avgScore;
     }
 
+    //Returns the different leaderboards depending on the tab selected by the user
+    //Each gameResultRepository method is associated with its own SQL query
     @GetMapping("/getLeaderboard/add")
     public List<game_result> getLeaderboardAdd(){
         return gameResultRepository.getAddGameLeaderboard();

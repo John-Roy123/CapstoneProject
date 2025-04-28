@@ -1,5 +1,4 @@
-const modal = document.querySelector('.modal');
-const gameButton = document.querySelector('.open-modal');
+const gameButton = document.querySelector('.game');
 const leaderboard = document.getElementById('leaderboard')
 const highScore = document.getElementById('hsNumber')
 const averageScore = document.getElementById('avgNumber')

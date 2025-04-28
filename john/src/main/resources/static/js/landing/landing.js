@@ -19,8 +19,7 @@ input.addEventListener("keyup", ((e)=>{
     if(e.key == "Enter"){
         console.log(usernameList)
         if(usernameList.includes(inputNoSpaces)) {
-            let url = "http://localhost:8080/account/" + input.value
-            window.location.href = url
+            window.location.href = "http://localhost:8080/account/" + input.value
         } else{alert("User does not exist!")}
     }
 }))

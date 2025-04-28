@@ -20,7 +20,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         this.accountRepository = accountRepository;
         this.passwordEncoder = passwordEncoder;
     }
-
+//Returns a user based on the supplied username
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Accounts user = accountRepository.findByUsername(username);

@@ -40,7 +40,7 @@ function startTimer(duration) {
     }, 1000);
 
 }
-
+//Sets the page to the game ended state - if user is not signed in it prompts them to sign in to save their score
 function gameOver(){
     window.removeEventListener('keyup', checkAnswer)
     inputLabel.value = ""
@@ -48,8 +48,11 @@ function gameOver(){
     newGame.classList.remove('hidden')
     returnBtn.classList.remove('hidden')
     newGame.addEventListener('click', selectMode)
-    if(p1Score !== 0) {
+    if(p1Score !== 0 && username !== "Guest") {
         submitScore()
+    }
+    if(username === "Guest"){
+        alert("Sign in to save your score!")
     }
     returnBtn.addEventListener('click', () => {
         window.location.href = "http://localhost:8080/"

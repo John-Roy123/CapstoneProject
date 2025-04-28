@@ -12,20 +12,25 @@
     <main>
         <section class = "account-class">
             <h1 class = "account-header">Account_Name</h1>
-            <div class="score-container">
-                <div class="HighScore">High Score</div>
-                <div class="AvgScore">Average Score</div>
-            </div>     
-            <div class="score-container">
-                <div class="HighScore" id="hsNumber">0</div>
-                <div class="AvgScore" id = "avgNumber">0</div>
-            </div>  
+            <div id="button-container">
+                <button class ="game">Play Game</button>
+                <button id = "leaderboard">Leaderboard</button>
+                <button id = "mainmenu"> Main Menu</button>
+                <button id = "logout">Log Out</button>
+            </div>
         </section>
-        <div id="button-container">
-            <button class ="open-modal">Play Game</button>
-            <button id = "leaderboard">Leaderboard</button>
-            <button id = "logout">Log Out</button>
+
+    <section class = score-section>
+        <div class="score-container">
+            <div class="HighScore">High Score: </div>
+            <div class="HighScore" id="hsNumber"> 0</div>
         </div>
+        <div class="score-container">
+            <div class="AvgScore">Average Score: </div>
+            <div class="AvgScore" id = "avgNumber"> 0</div>
+        </div>
+    </section>
+
     </main>
     <script src="/js/account/account.js"></script>
 </body>
