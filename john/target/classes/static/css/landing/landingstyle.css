@@ -1,0 +1,126 @@
+@font-face {
+    font-family: Neueu Machina Regular;
+    src: url(NeueMachina-Regular.otf);
+}
+@font-face {
+    font-family: Neueu Machina Ultrabold;
+    src: url(NeueMachina-Ultrabold.otf);
+}
+
+
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition: all 1s;
+}
+
+.column-left{
+    font-family: 'Neueu Machina Ultrabold';
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    color: white;
+    padding: 10rem;
+    
+    
+}
+
+.nav{
+    background-color: #000000;
+    overflow: hidden;
+}
+
+.nav input{
+    float: right;
+    padding: 0.5rem;
+    border: none;
+    margin-right: 16px;
+    font-size: 17px;
+    list-style: none;
+}
+
+.nav input li{
+    padding: 10px;
+    cursor: pointer;
+}
+
+.nav input li:hover{
+    background-color: #eee;
+}
+
+.nav a{
+    float: left;
+    color: white;
+    font-family: 'Neueu Machina Ultrabold', serif;
+    text-align: center;
+    font-size: 1.4rem;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.nav a:hover{
+    background-color: #333333;
+    color: white;
+}
+
+.nav a.active{
+    background-color: #1A1A1A;
+    color: white;
+}
+
+.column-left h1{
+    margin-bottom: .5rem;
+    font-size: 5rem;
+    transition: all 0.5s;
+    opacity: .1.2s;
+}
+
+.column-left p{
+    margin-left: 25px;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    transition: ease-in .9s;
+    opacity: 1.2s;
+}
+
+
+
+.githubdiv{
+    margin: 50px;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+
+}
+
+.github-logo{ 
+    margin-right: 6px; 
+    z-index: 10;
+    width: 25px;
+    height: 25px;
+}
+
+.github{
+    font-size: 1rem;
+    border: none;
+    color: pink;
+    background: none;
+    cursor: pointer;
+}
+.github:hover{
+    font-size: 1.2rem;
+    color: rgb(247, 107, 130);
+}
+
+
+body{
+    height: 100%;
+    background: rgb(0,0,1);
+    background: linear-gradient(155deg, rgba(0,0,1,1) 0%, rgba(0,0,0,1) 60%, rgba(185,0,181,1) 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}

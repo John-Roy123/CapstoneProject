@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/css/account/account.css" />
+    <title>Account Page</title>
+</head>
+
+<body>
+    <main>
+        <section class = "account-class">
+            <h1 class = "account-header">Account_Name</h1>
+            <div id="button-container">
+                <button class ="game">Play Game</button>
+                <button id = "leaderboard">Leaderboard</button>
+                <button id = "mainmenu"> Main Menu</button>
+                <button id = "logout">Log Out</button>
+            </div>
+        </section>
+
+    <section class = score-section>
+        <div class="score-container">
+            <div class="HighScore">High Score: </div>
+            <div class="HighScore" id="hsNumber"> 0</div>
+        </div>
+        <div class="score-container">
+            <div class="AvgScore">Average Score: </div>
+            <div class="AvgScore" id = "avgNumber"> 0</div>
+        </div>
+    </section>
+
+    </main>
+    <script src="/js/account/account.js"></script>
+</body>
