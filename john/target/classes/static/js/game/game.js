@@ -55,9 +55,7 @@ function gameOver(){
         alert("Sign in to save your score!")
     }
     p1Score = 0;
-    returnBtn.addEventListener('click', () => {
-        window.location.href = "http://localhost:8080/"
-    })
+
 }
 
 //checks if input is correct
@@ -159,10 +157,12 @@ function selectMode(){
     problemLabel.classList.add('hidden')
     current.classList.add('hidden')
     newGame.classList.add('hidden')
-    returnBtn.classList.add('hidden')
-
+    returnBtn.classList.remove('hidden')
     divideGameBtn.classList.remove('hidden')
     subtractGameBtn.classList.remove('hidden')
+    returnBtn.addEventListener('click', () => {
+        window.location.href = "http://localhost:8080/"
+    })
 
     addGameBtn.addEventListener('click', ()=>{
         gameMode = "addition"

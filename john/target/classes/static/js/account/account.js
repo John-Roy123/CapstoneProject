@@ -4,6 +4,7 @@ const highScore = document.getElementById('hsNumber')
 const averageScore = document.getElementById('avgNumber')
 const usernameHeader = document.querySelector('.account-header')
 const logoutbtn = document.getElementById('logout')
+const menubtn = document.getElementById('mainmenu')
 let username = localStorage.getItem("Username")
 let pathUsername = window.location.pathname
 
@@ -79,7 +80,9 @@ setHighScore()
 setAverageScore()
 
 
-
+menubtn.addEventListener('click', ()=>{
+  window.location.href = "http://localhost:8080/";
+});
 gameButton.addEventListener('click', ()=>{
   window.location.href = "http://localhost:8080/game";
 });
@@ -90,5 +93,5 @@ leaderboard.addEventListener('click', ()=>{
 
 logoutbtn.addEventListener('click', ()=>{
   localStorage.removeItem("Username")
-  window.location.href = "http://localhost:8080/login"
+  window.location.href = "http://localhost:8080"
 })
