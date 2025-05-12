@@ -18,3 +18,8 @@ Java backend, and a database attached
     Users will be able to log in and out of their accounts
     Users will also be able to view their own gameplay statistics on their account page, and look up other users
     Users will be able to access a leaderboard of the top 10 highest scores.
+
+## To Run:
+    To run this application, first you must run the MySQL script to build the MySQL database. Once that is built and configured, the 
+    Java application needs to be built using maven. Once it is built and run, it will load onto localhost:8080 - if the port is not already occupied.
+    If port 8080 is occupied, the port chosen instead will be listed in the console logs. 
